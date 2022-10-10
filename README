@@ -1,0 +1,39 @@
+REQUIRE
+
+- Linux operating system
+- C++ 20 compiler
+- 48 GiB RAM
+- 48 GiB disk space
+
+RUN STEP
+
+1. install dependencies
+  $ sudo apt install libpcap-dev
+
+2. build this program
+  $ g++ -std=gnu++20 -O2 -o vmess-identify-poc main.cpp -lpcap -pthread
+
+3. build lookup table (takes about tens of minutes to several hours)
+  $ ./vmess-identify-poc generate
+
+4. (optional) warm up lookup table
+  $ cat data.bin > /dev/null
+
+5. (optional) turn off segmentation offload
+  $ sudo ethtool -K <network interface> gso off gro off tso off
+
+6. start analyzing network traffic
+  $ sudo tcpdump -i <network interface> -U -w - | ./vmess-identify-poc
+
+7. start you v2ray client and server (in another terminal)
+  $ v2ray run -c <config file>
+
+NOTES
+
+1. Need to capture all packets sent by v2ray, so you need to start tcpdump
+   first, and then (re-)start the v2ray.
+
+2. Only Ethernet Caputre and IPv4 supported. Linux Cooked Capture is NOT
+   supported. IPv6 is NOT supported.
+
+3. Precision is almost 100%, but recall is not.
