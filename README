@@ -4,6 +4,7 @@ REQUIRE
 - C++ 20 compiler
 - 48 GiB RAM
 - 48 GiB disk space
+- vulnerable V2Ray version (<= 5.1.0)
 
 RUN STEP
 
