@@ -345,7 +345,7 @@ struct endpoint_state_t {
 
 template<size_t N>
 static void format_ip4(char (&dst)[N], uint32_t v) {
-    snprintf(dst, N, "%u.%u.%u.%u", (v >> 24) & 0xFF, (v >> 16) & 0xFF, (v >> 8) & 0xFF, "%u", v & 0xFF);
+    snprintf(dst, N, "%u.%u.%u.%u", (v >> 24) & 0xFF, (v >> 16) & 0xFF, (v >> 8) & 0xFF, v & 0xFF);
 }
 
 [[maybe_unused]]
