@@ -18,7 +18,7 @@ RUN STEP
   $ ./vmess-identify-poc generate
 
 4. (optional) warm up lookup table
-  $ cat data.bin > /dev/null
+  $ cat patterns.dat > /dev/null
 
 5. (optional) turn off segmentation offload
   $ sudo ethtool -K <network interface> gso off gro off tso off
