@@ -1,4 +1,9 @@
-REQUIRE
+LINKS
+
+- https://github.com/v2fly/v2ray-core/issues/2054
+- https://www.youtube.com/watch?v=k6VrXFEozPM
+
+REQUIRES
 
 - Linux operating system
 - C++ 20 compiler
@@ -6,7 +11,7 @@ REQUIRE
 - 48 GiB disk space
 - vulnerable V2Ray version (<= 5.1.0)
 
-RUN STEP
+RUN STEPS
 
 1. install dependencies
   $ sudo apt install libpcap-dev
